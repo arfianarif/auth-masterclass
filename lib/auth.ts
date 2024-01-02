@@ -10,6 +10,14 @@ export const {
   signIn,
   signOut
 } = NextAuth({
+  events: {
+    async linkAccount({ user }) {
+      await prisma.user.update({
+        where: { id: user.id },
+        data: { emailVerified: new Date() }
+      })
+    }
+  },
   callbacks: {
     // async signIn({ user, account, profile, email, credentials }) {
     //   // use this logic if app need verified user
