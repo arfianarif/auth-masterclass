@@ -11,6 +11,17 @@ export const {
   signOut
 } = NextAuth({
   callbacks: {
+    // async signIn({ user, account, profile, email, credentials }) {
+    //   // use this logic if app need verified user
+    //   // const existingUser = await getUserById(user.id)
+    //   // if (!existingUser || !existingUser.emailVerified) {
+    //   //   return false
+    //   // }
+    //   return true
+    // },
+    // async redirect({ url, baseUrl }) {
+    //   return baseUrl
+    // },
     async session({ session, user, token }) {
       if (token.sub && session.user) {
         session.user.id = token.sub
