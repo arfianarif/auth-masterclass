@@ -1,7 +1,7 @@
 'use client'
 
 import { ReactNode } from 'react'
-import { Card, CardContent, CardFooter } from '@/components/ui/card'
+import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { Header } from '@/components/auth/header'
 import { Social } from '@/components/auth/social'
 import { BackButton } from '@/components/auth/back-button'
@@ -23,7 +23,9 @@ const CardWrapper = ({
 }: props) => {
   return (
     <Card className='w-[400px] shadow-md'>
-      <Header label={headerLabel} />
+      <CardHeader>
+        <Header label={headerLabel} />
+      </CardHeader>
       <CardContent>{children}</CardContent>
       {showSocial && (
         <CardFooter>
