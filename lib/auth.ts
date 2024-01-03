@@ -4,6 +4,7 @@ import { PrismaAdapter } from "@auth/prisma-adapter"
 import { prisma } from "./db"
 import { getUserById } from "@/data/user"
 import { getTwoFactorConfirmationByUserId } from "@/data/two-factor-confirmation"
+import { getAccountByUserId } from "@/data/account"
 
 export const {
   handlers: { GET, POST },
@@ -29,12 +30,11 @@ export const {
       if (account?.provider !== "credentials") return true
 
       const existingUser = await getUserById(user.id)
-
       // Prevent signIn without email verification
       if (!existingUser?.emailVerified) return false
 
       // 2FA
-      if (!existingUser?.isTwoFactorEnable) {
+      if (existingUser?.isTwoFactorEnable) {
         const twoFactorConfirmation = await getTwoFactorConfirmationByUserId(user.id)
 
         if (!twoFactorConfirmation) return false
@@ -61,12 +61,25 @@ export const {
       if (token.isTwoFactorEnable && session.user) {
         session.user.isTwoFactorEnable = token.isTwoFactorEnable as boolean
       }
+      if (session.user) {
+        session.user.name = token.name
+        session.user.email = token.email
+        session.user.isOAuth = token.isOAuth as boolean
+      }
       return session
     },
     async jwt({ token, user, account, profile, isNewUser }) {
       if (!token.sub) return token
+
       const existingUser = await getUserById(token.sub)
+
       if (!existingUser) return token
+
+      const existingAccount = await getAccountByUserId(existingUser.id)
+
+      token.isOAuth = !!existingAccount
+      token.name = existingUser.name
+      token.email = existingUser.email
       token.role = existingUser.role
       token.isTwoFactorEnable = existingUser.isTwoFactorEnable
       return token
