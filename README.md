@@ -13,6 +13,13 @@ this project uses :
 - npx prisma db push
 - npm run dev
 
+## For Prisma Change
+- if any change on yout schema.prisma run:
+  - shutdown first
+  - npx prisma generate
+  - npx prisma db push
+  or you can go in prisma.io documentation
+
 ## For Credentials Verification
 this project use third party Resend for credentials, if user do not have emailVerification on fields, they can not login.
 - Creating user by email -> type credentials
