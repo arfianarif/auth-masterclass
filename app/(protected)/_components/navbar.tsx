@@ -9,7 +9,7 @@ const Navbar = () => {
   const pathname = usePathname()
 
   return (
-    <nav className='bg-secondary flex justify-between items-center p-4 rounded-xl w-[600px] shadow-sm fixed top-0'>
+    <nav className='bg-secondary flex justify-between items-center p-4 rounded-xl w-[600px] shadow-sm fixed top-4'>
       <div className='flex gap-x-2'>
         <Button asChild variant={pathname === '/server' ? 'default' : 'ghost'}>
           <Link href='/server'>Server</Link>
