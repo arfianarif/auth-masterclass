@@ -1,5 +1,10 @@
 ## Overview
-1. this project use next14, prisma, resend, mysql, shadcn ui, next-auth@beta
+this project uses :
+1. Next 14 https://nextjs.org/docs
+2. Next Auth Beta https://authjs.dev/guides/upgrade-to-v5
+3. Prisma https://www.prisma.io/docs/getting-started
+4. Resend https://resend.com/docs/introduction
+5. Shadcn UI https://ui.shadcn.com/docs
 
 ## Getting Started
 1. npm i
