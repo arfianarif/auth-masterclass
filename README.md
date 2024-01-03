@@ -42,4 +42,4 @@ this project use third party Resend for credentials, if user do not have emailVe
 - [x] 2FA Authentication
 - [x] Server & Client UI Component
 - [x] Admin Page
-- [ ] Setting Page
+- [x] Setting Page
