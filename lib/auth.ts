@@ -58,6 +58,9 @@ export const {
       if (token.role && session.user) {
         session.user.role = token.role as 'admin' | 'user'
       }
+      if (token.isTwoFactorEnable && session.user) {
+        session.user.isTwoFactorEnable = token.isTwoFactorEnable as boolean
+      }
       return session
     },
     async jwt({ token, user, account, profile, isNewUser }) {
@@ -65,6 +68,7 @@ export const {
       const existingUser = await getUserById(token.sub)
       if (!existingUser) return token
       token.role = existingUser.role
+      token.isTwoFactorEnable = existingUser.isTwoFactorEnable
       return token
     }
   },

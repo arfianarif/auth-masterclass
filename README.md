@@ -40,6 +40,6 @@ this project use third party Resend for credentials, if user do not have emailVe
 - [x] Verification Credentials
 - [x] Credentials Reset Password -> Email -> Form
 - [x] 2FA Authentication
-- [ ] Server & Client UI Auth
+- [x] Server & Client UI Component
 - [ ] Admin Page
 - [ ] Setting Page
