@@ -4,6 +4,7 @@ import './globals.css'
 
 import { SessionProvider } from 'next-auth/react'
 import { auth } from '@/lib/auth'
+import { Toaster } from '@/components/ui/sonner'
 
 const font = Plus_Jakarta_Sans({ subsets: ['latin'] })
 
@@ -21,7 +22,10 @@ export default async function RootLayout({
   return (
     <SessionProvider session={session}>
       <html lang='en'>
-        <body className={font.className}>{children}</body>
+        <body className={font.className}>
+          <Toaster />
+          {children}
+        </body>
       </html>
     </SessionProvider>
   )
