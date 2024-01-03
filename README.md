@@ -26,3 +26,13 @@ this project use third party Resend for credentials, if user do not have emailVe
 
 ## For Login with Github
 1. setup on GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET
+
+### This Project Road Map ✓
+- [x] Register Page
+- [x] Login Page
+- [x] Verification Credentials
+- [ ] Reset Password -> Email
+- [ ] 2FA Authentication
+- [ ] Server & Client UI Auth
+- [ ] Admin Page
+- [ ] Setting Page
