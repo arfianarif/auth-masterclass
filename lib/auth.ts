@@ -23,14 +23,18 @@ export const {
     }
   },
   callbacks: {
-    // async signIn({ user, account, profile, email, credentials }) {
-    //   // use this logic if app need verified user
-    //   // const existingUser = await getUserById(user.id)
-    //   // if (!existingUser || !existingUser.emailVerified) {
-    //   //   return false
-    //   // }
-    //   return true
-    // },
+    async signIn({ user, account, profile, email, credentials }) {
+      // Allow OAuth without email verification
+      if (account?.provider !== "credentials") return true
+
+      const existingUser = await getUserById(user.id)
+
+      // Prevent signIn without email verification
+      if (!existingUser?.emailVerified) return false
+
+      // Todo: 2FA
+      return true
+    },
     // async redirect({ url, baseUrl }) {
     //   return baseUrl
     // },
