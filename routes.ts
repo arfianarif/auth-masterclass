@@ -5,19 +5,20 @@
  */
 export const publicRoutes = [
   "/",
-  "/auth/new-verification"
+  "/auth/new-verification",
 ]
 
 /**
  * An array of routes for authentication
  * Required authentication will redirected to /login
  * @type{string[]}
- */
+*/
 export const authRoutes = [
   "/auth/login",
   "/auth/register",
   "/auth/error",
   "/auth/reset",
+  "/auth/new-password",
 ]
 
 /**
